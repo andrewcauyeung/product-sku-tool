@@ -26,13 +26,19 @@ function makePost(path, data, success_f, error_f) {
 }
 
 function success_f(data, productSKU) {
+  function callback(param, func) {
+    return func(param);
+  }
+
   console.log(data);
   if (
     data["getDlvrCalResponse"]["responseStatus"] === "FAILURE" &&
     productSKU != "N/A"
   ) {
-    var dropdown = genDropdown();
     console.log("failure " + productSKU);
+
+    var dropdown = callback(productSKU, genDropdown);
+
     $(".unavilable-results").append(
       "<tr>" +
         "<td>" +
@@ -57,8 +63,8 @@ function success_f(data, productSKU) {
     data["getDlvrCalResponse"]["responseStatus"] === "SUCCESS" &&
     productSKU != "N/A"
   ) {
+    var dropdown = callback(productSKU, genDropdown);
     console.log("success" + productSKU);
-    var dropdown = genDropdown();
     $(".unavilable-results").append(
       "<tr>" +
         "<td>" +
@@ -84,10 +90,14 @@ function success_f(data, productSKU) {
   }
 }
 
-function genDropdown() {
+function genDropdown(productSKU) {
   var dropdownStr =
-    "<a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Choose Brand</a>" +
-    "<ul id='dropdown1' class='dropdown-content'>";
+    "<a class='dropdown-trigger btn' href='#' data-target='" +
+    productSKU +
+    "'>Choose Brand</a>" +
+    "<ul id='" +
+    productSKU +
+    "' class='dropdown-content'>";
   var brandCodes = [
     "18F",
     "HD",
@@ -103,7 +113,12 @@ function genDropdown() {
   ];
 
   for (var i = 0; i < brandCodes.length; i++) {
-    var link = genSiteLink(brandCodes[i]);
+    var link =
+      '"https://www.1800flowers.com/SearchDisplay?catalogId=13302&brandIdTab=' +
+      brandCodes[i] +
+      "_&storeId=20051&langId=-1&currentPage=1&sType=SimpleSearch&resultCatEntryType=2&ip_navtype=search&searchTerm=" +
+      productSKU +
+      '"';
     var temp =
       "<li>" +
       "<a target = '_blank' href=" +
@@ -117,16 +132,6 @@ function genDropdown() {
   var closingTag = "</ul>";
 
   return dropdownStr.concat(closingTag);
-}
-
-function genSiteLink(brandCode, productSKU) {
-  var site =
-    '"https://www.1800flowers.com/SearchDisplay?catalogId=13302&brandIdTab=' +
-    brandCode +
-    "_&storeId=20051&langId=-1&currentPage=1&sType=SimpleSearch&resultCatEntryType=2&ip_navtype=search&searchTerm=" +
-    productSKU +
-    '"';
-  return site;
 }
 
 function error_f() {}
