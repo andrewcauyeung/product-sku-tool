@@ -1,0 +1,93 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="css/custom.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/ajax.js"></script>
+    <script src="js/side-nav.js"></script>
+    <script src="js/single-sku-checker.js"></script>
+  </head>
+  <body>
+    <ul id="slide-out" class="sidenav sidenav-fixed">
+      <li class="logo">
+        <a id="logo-container" href="/" class="brand-logo">
+          <object
+            id="front-page-logo"
+            type="image/jpeg"
+            data="images/download.jpg"
+            >Image not found</object
+          ></a
+        >
+        <h5 class="title">1-800 Flowers Tools</h5>
+      </li>
+      <li><a href="index.html">Single SKU Checker</a></li>
+      <li><a href="single-sku-checker.html">Single SKU Checker</a></li>
+      <li>
+        <a target="_blank" href="https://www.csvjson.com/csv2json"
+          >CSV To JSON Converter</a
+        >
+      </li>
+    </ul>
+    <a href="#" data-target="slide-out" class="sidenav-trigger"
+      ><i class="material-icons">menu</i></a
+    >
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <h1 class="header">Bulk SKU Checker</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="product_sku" type="text" class="validate" />
+                <label for="product_sku">Product SKU</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="brand_code" type="text" class="validate" />
+                <label for="brand_code">Brand Code</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="zip" type="text" class="validate" />
+                <label for="zip">Brand Code</label>
+              </div>
+            </div>
+            <button class="btn waves-effect waves-light" id="submit">
+              Submit
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+          <table class="striped responsive-table">
+            <thead>
+              <tr>
+                <th>Product SKU</th>
+                <th>Sucess/Fail</th>
+                <th>Potential URL</th>
+              </tr>
+            </thead>
+            <tbody class="unavilable-results">
+              <!--RESULTS CONTAINER-->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

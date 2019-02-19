@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="css/custom.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/ajax.js"></script>
+    <script src="js/side-nav.js"></script>
+    <script src="js/bulk-sku-checkers.js"></script>
+  </head>
+  <body>
+    <ul id="slide-out" class="sidenav sidenav-fixed">
+      <li class="logo">
+        <a id="logo-container" href="/" class="brand-logo">
+          <object
+            id="front-page-logo"
+            type="image/jpeg"
+            data="images/download.jpg"
+            >Image not found</object
+          ></a
+        >
+        <h5 class="title">1-800 Flowers Tools</h5>
+      </li>
+      <li><a href="index.html">Bulk SKU Checker</a></li>
+      <li><a href="single-sku-checker.html">Single SKU Checker</a></li>
+      <li>
+        <a target="_blank" href="https://www.csvjson.com/csv2json"
+          >CSV To JSON Converter</a
+        >
+      </li>
+    </ul>
+    <a href="#" data-target="slide-out" class="sidenav-trigger"
+      ><i class="material-icons">menu</i></a
+    >
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <h1 class="header">Bulk SKU Checker</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>File</span>
+                <input id="input" type="file" />
+              </div>
+              <div class="file-path-wrapper">
+                <input
+                  class="file-path validate"
+                  type="text"
+                  placeholder="Upload one file"
+                />
+              </div>
+            </div>
+            <table class="striped responsive-table">
+              <thead>
+                <tr>
+                  <th>Product SKU</th>
+                  <th>Sucess/Fail</th>
+                  <th>Potential URL</th>
+                </tr>
+              </thead>
+              <tbody class="unavilable-results">
+                <!--RESULTS CONTAINER-->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
